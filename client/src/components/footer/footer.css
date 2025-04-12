@@ -1,0 +1,29 @@
+.footer{
+    height: 16vh;
+    background-color: var(--green-pigment);;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+.footer h1{
+    font-size:2rem;
+    font-family: var(--logo);
+}
+.footer h5{
+    font-size:1rem;
+    font-family: var(--font-family-2);
+}
+.footer h6{
+    font-size:1.2rem;
+    font-family: var(--font-family-1)
+}
+.footer h6 a {
+    text-decoration: none;
+    color:black
+}
+.footer h6 a:hover{
+    text-decoration: underline;
+    color:#009EFD;
+}

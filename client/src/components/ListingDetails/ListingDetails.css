@@ -1,0 +1,225 @@
+.listing-details-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    background-color: #f8f9fa;
+    padding: 2rem;
+    border-radius: 10px;
+    flex-wrap: wrap;
+  }
+  
+  /* Swiper Slider */
+  .listing-slider {
+    width: 100%;
+    max-width: 700px;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  
+  .listing-swiper {
+    width: 100%;
+  }
+  
+  .listing-image {
+    width: 100%;
+    height: 400px;
+    object-fit: contain;
+    border-radius: 10px;
+  }
+  
+  /* Listing Info */
+  .listing-info {
+    max-width: 700px;
+    width: 100%;
+    padding: 1.5rem;
+    border-radius: 10px;
+    text-align: left;
+  }
+  .listing-info .span-container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 15px;
+    max-width: 650px;
+    padding: 1rem;
+  }
+  .listing-info .span-container h6{
+    flex: 1 1 45%;
+    font-family: var(--font-family-2);
+  }
+  .listing-info .span-container span{
+    font-family: var(--font-family-4);
+    margin-right: 0.2rem;
+    color:#666;
+  }
+  .listing-info .span-container svg{
+    font-size: 2rem;
+    margin-right:0.8rem ;
+    color: #666;
+
+  }
+  .listing-info h3 {
+    font-size: 2.6rem;
+    color: #333;
+    margin-bottom: 0.5rem;
+    font-family: var(--font-family-4);
+  }
+  
+  
+  .listing-info p {
+    font-size: 18px;
+    color: #666;
+    margin-bottom: 1rem;
+    font-family: var(--font-family-2);
+  }
+  .listing-info span{
+    font-size: 18px;
+  }
+  .listing-price {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #2c3e50;
+  }
+  
+  
+  .listing-description{
+    max-width: 1200px;
+    width: 100%;
+    padding: 1.5rem;
+    border-radius: 10px;
+    text-align: left;
+  }
+  .listing-description span{
+    font-size: 1.2rem;
+    font-family: var(--font-family-4);
+    color: #666;
+  }
+  .listing-description p{
+    font-size: 1.1rem;
+    font-family: var(--font-family-2);
+    margin-top: 1rem;
+  }
+  .listing-description .span-container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 15px;
+    max-width: 1200px;
+    padding: 1rem;
+  }
+  .listing-description .span-container h6{
+    flex: 1 1 45%;
+    font-size: 1.2rem;
+    font-family: var(--font-family-2);
+  }
+  .listing-description .span-container svg{
+    font-size: 2rem;
+    margin-right:0.8rem ;
+    color: #666;
+  }
+  .listing-description .span-container h6 span{
+    color:#666;
+    font-family: "arial";
+  }
+
+  .owner-info{
+    padding: 0.5rem;
+  }
+  .owner-info svg{
+    font-size: 1.5rem;
+    margin-right: 10px;
+    color: gold;
+  }
+  .owner-info span{
+   font-size: 1.2rem;
+   font-family: var(--font-family-4);
+  }
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .listing-details-wrapper {
+      flex-direction: column;
+      align-items: center;
+      padding: 1rem;
+    }
+  
+    .listing-slider {
+      width: 100%;
+    }
+  
+    .listing-info {
+      width: 100%;
+      text-align: center;
+    }
+    .listing-info .span-container{
+      grid-template-columns: 1fr;
+      flex-direction: column;
+      text-align: left;
+    }
+    .listing-info .span-container svg{
+     font-size: 20px;
+    }
+    .listing-description .span-container{
+      grid-template-columns: 1fr;
+      flex-direction: column;
+      text-align: left;
+    }
+    .listing-description .span-container h6{
+      font-size: 0.9rem;
+    }
+    .listing-description p{
+      font-size: 0.9rem;
+    }
+    .listing-description .span-container svg{
+      font-size: 1rem;
+      margin-right:0.8rem ;
+      color: #666;
+    }
+    .listing-description .span-container h6 span{
+      color:#666;
+    }
+  }
+
+
+
+
+  /* Modal Overlay */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+/* Modal Content */
+.modal-content {
+  background: white;
+  padding: 20px;
+  width: 90%;
+  max-width: 400px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  position: relative;
+}
+
+/* Close Button */
+.close-btn {
+  padding: 8px 15px;
+  margin-top: 15px;
+  background: #f44336;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  float: right;
+}
+
+.close-btn:hover {
+  background: #d32f2f;
+}
