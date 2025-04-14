@@ -90,7 +90,7 @@ const Login = () => {
         {success && <div className="success">{success}</div>}
 
         <p>
-          Don’t have an account? <a href="https://home-scape-real-estate.vercel.app//register">Register</a>
+          Don’t have an account? <a href="https://home-scape-real-estate.vercel.app/register">Register</a>
         </p>
       </form>
     </div>
