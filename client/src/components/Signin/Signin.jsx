@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux"; // Use Redux for authentication
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { setLogin } from "../../redux/state.js"; // Import Redux action
 import "./Signin.css";
 
@@ -90,7 +91,7 @@ const Login = () => {
         {success && <div className="success">{success}</div>}
 
         <p>
-          Don’t have an account? <a href="https://home-scape-real-estate.vercel.app/register">Register</a>
+          Don’t have an account? <Link to="/register">Register</Link>
         </p>
       </form>
     </div>
