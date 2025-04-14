@@ -34,7 +34,7 @@ const PropertyCard = ({
   const handleDeleteProperty = () => {
     if (window.confirm('Are you sure you want to delete this property? This action is irreversible.')) {
       axios
-        .delete(`http://localhost:8000/listing/${_id}/delete`)
+        .delete(`https://home-scape-real-estate.vercel.app/listing/${_id}/delete`)
         .then((res) => {
           alert('Property Deleted Successfully!');
           console.log(res.data);

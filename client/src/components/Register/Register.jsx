@@ -53,7 +53,7 @@ const Register = () => {
         registerForm.append(key, formData[key]);
       }
 
-      const response = await fetch("http://localhost:8000/auth/register", {
+      const response = await fetch("https://home-scape-real-estate.vercel.app/auth/register", {
         method: "POST",
         body: registerForm,
       });

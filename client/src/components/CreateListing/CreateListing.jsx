@@ -107,7 +107,7 @@ const handleSubmit = async (e) => {
      }
 
     // ✅ Send everything in one request
-    const response = await fetch("http://localhost:8000/listing/createlisting", {
+    const response = await fetch("https://home-scape-real-estate.vercel.app/listing/createlisting", {
       method: "POST",
       body: formDataToSend, // ✅ Send as FormData
     });

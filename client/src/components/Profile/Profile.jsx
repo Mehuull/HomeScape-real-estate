@@ -27,7 +27,7 @@ const Profile = () => {
   const handleSubmit = (e) => {
     e.preventDefault(); // Prevent page refresh
     axios
-      .put(`http://localhost:8000/auth/${_id}/profile`, formData)
+      .put(`https://home-scape-real-estate.vercel.app/auth/${_id}/profile`, formData)
       .then((res) => {
         alert('Profile Updated Successfully!');
         console.log(res.data);

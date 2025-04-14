@@ -32,7 +32,7 @@ const Properties = () => {
   const getQueryListings = async () => {
     try {
       setLoading(true);
-      let url = "http://localhost:8000/listing";
+      let url = "https://home-scape-real-estate.vercel.app/listing";
       const params = new URLSearchParams();
 
       if (selectedCategory !== "All") params.append("category", selectedCategory);
