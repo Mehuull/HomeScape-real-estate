@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "./Properties.css";
+import "./properties.css";
 import { categories } from "../../assets/data";
 import { useDispatch, useSelector } from "react-redux";
 import { setListings } from "../../redux/state.js";
