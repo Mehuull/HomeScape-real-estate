@@ -3,7 +3,6 @@ import cors from "cors";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
 import path from "path";
-import { fileURLToPath } from "url";
 import authRoutes from "./routes/auth.js";
 import listingRoutes from "./routes/listing.js"
 
