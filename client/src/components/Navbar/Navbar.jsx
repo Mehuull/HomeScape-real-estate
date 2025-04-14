@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { setLogout } from "../../redux/state.js";
 import { PiSignInBold } from "react-icons/pi";
-import "./navbar.css";
+import "./Navbar.css";
 import logo from "../../assets/logo.png";
 
 const Navbar = () => {
