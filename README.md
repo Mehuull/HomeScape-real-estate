@@ -11,8 +11,6 @@
 - [Technologies Used](#technologies-used)  
 - [Folder Structure](#folder-structure)  
 - [Features](#features)  
-- [Deployment](#deployment)  
-- [Troubleshooting](#troubleshooting)  
 - [Contact Information](#contact-information)  
 - [Acknowledgments](#acknowledgments)
 
@@ -46,7 +44,7 @@
 
 1. **Start the backend server**  
    ```bash
-   cd server && npm start
+   cd server && npm run dev
    ```
 
 2. **Start the frontend in a separate terminal**  
@@ -126,3 +124,40 @@ For feedback or collaboration, feel free to reach out on [LinkedIn](https://www.
 - `jsonwebtoken`
 - `mongoose`
 - `@google/generative-ai`
+
+  ## What I Learned
+
+Building **Homescape**, my first full-stack real estate web application, was a transformative experience that significantly expanded my development skill set. This project allowed me to move beyond just the frontend and dive into the backend, infrastructure, and deployment workflows with real-world tools.
+
+### 🌐 Frontend Mastery
+
+Creating a responsive and visually appealing interface using **React**, **Redux Toolkit**, and **Tailwind CSS** taught me how to structure reusable components, manage global state efficiently, and design for user experience. I tackled challenges with React hooks like `useState`, `useEffect`, and `useSelector`, and enhanced navigation using `React Router DOM`.
+
+### 🛠️ Backend Foundations
+
+Working with **Node.js**, **Express**, and **MongoDB** pushed me to understand backend architecture, API route handling, and data modeling. I learned to secure routes with **JWT authentication**, structure my backend into modular controllers, and handle errors gracefully.
+
+### 📦 Managing Assets with Supabase
+
+Using **Supabase** for image uploads introduced me to cloud storage integrations. I explored how to upload, retrieve, and store secure image URLs, linking media to MongoDB records to keep the database lightweight.
+
+### 🗺️ GeoLocation and AI Integration
+
+Integrating **LocationIQ** for geospatial search and **Gemini AI** to generate automatic property descriptions was both challenging and rewarding. It sharpened my understanding of third-party APIs and how to connect them meaningfully into a user-focused feature set.
+
+### 🚀 Deployment Confidence
+
+Deploying Homescape with **Vercel** taught me how to configure build processes, manage environment variables, and organize production-ready code. I also learned to set up `vercel.json` and automate frontend-backend integration.
+
+### 🔄 Version Control & CI/CD Awareness
+
+Using Git throughout the project emphasized the importance of version control, collaborative coding, and maintaining clean commits. I also started exploring **CI/CD pipelines** to automate builds and deployments.
+
+### 🔍 The Art of Debugging and Logging
+
+Implementing **Winston** for logging helped me understand backend monitoring and how to catch issues early. I grew more confident in reading logs, debugging asynchronous code, and handling server-side errors.
+
+---
+
+Overall, this project was more than just a website — it was a full learning journey. It bridged my understanding between frontend creativity and backend logic. I now feel confident in building full-stack applications that are scalable, interactive, and user-focused. Homescape marked a milestone in my growth as a **full-stack developer**, and I'm excited to take on even more advanced challenges ahead.
+
