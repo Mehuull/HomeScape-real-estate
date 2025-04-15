@@ -145,11 +145,6 @@ Using **Supabase** for image uploads introduced me to cloud storage integrations
 
 Deploying Homescape with **Vercel** taught me how to configure build processes, manage environment variables, and organize production-ready code. I also learned to set up `vercel.json` and automate frontend-backend integration.
 
-### 🔄 Version Control & CI/CD Awareness
-
-Using Git throughout the project emphasized the importance of version control, collaborative coding, and maintaining clean commits. I also started exploring **CI/CD pipelines** to automate builds and deployments.
-
----
 
 Overall, this project was more than just a website — it was a full learning journey. It bridged my understanding between frontend creativity and backend logic. I now feel confident in building full-stack applications that are scalable, interactive, and user-focused. Homescape marked a milestone in my growth as a **full-stack developer**, and I'm excited to take on even more advanced challenges ahead.
 
