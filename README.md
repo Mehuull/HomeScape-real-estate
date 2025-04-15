@@ -61,10 +61,10 @@
 
 ## Technologies Used
 
-- **Frontend:** React, Redux Toolkit 
+- **Frontend:** React, Redux Toolkit ,Googlefonts,cdnfonts,ionicons
 - **Backend:** Node.js, Express.js  
 - **Database:** MongoDB  
-- **Authentication:** JWT  
+- **Authentication:** JWT,bcrypt for encryption  
 - **Image Storage:** Supabase   
 - **AI Description Generator:** Gemini AI  
 ---
@@ -141,10 +141,6 @@ Working with **Node.js**, **Express**, and **MongoDB** pushed me to understand b
 
 Using **Supabase** for image uploads introduced me to cloud storage integrations. I explored how to upload, retrieve, and store secure image URLs, linking media to MongoDB records to keep the database lightweight.
 
-### 🗺️ GeoLocation and AI Integration
-
-Integrating **LocationIQ** for geospatial search and **Gemini AI** to generate automatic property descriptions was both challenging and rewarding. It sharpened my understanding of third-party APIs and how to connect them meaningfully into a user-focused feature set.
-
 ### 🚀 Deployment Confidence
 
 Deploying Homescape with **Vercel** taught me how to configure build processes, manage environment variables, and organize production-ready code. I also learned to set up `vercel.json` and automate frontend-backend integration.
@@ -152,10 +148,6 @@ Deploying Homescape with **Vercel** taught me how to configure build processes, 
 ### 🔄 Version Control & CI/CD Awareness
 
 Using Git throughout the project emphasized the importance of version control, collaborative coding, and maintaining clean commits. I also started exploring **CI/CD pipelines** to automate builds and deployments.
-
-### 🔍 The Art of Debugging and Logging
-
-Implementing **Winston** for logging helped me understand backend monitoring and how to catch issues early. I grew more confident in reading logs, debugging asynchronous code, and handling server-side errors.
 
 ---
 
