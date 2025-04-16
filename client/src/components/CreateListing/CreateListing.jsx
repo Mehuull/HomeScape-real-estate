@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState ,useEffect} from "react";
 import "./CreateListing.css";
 import { categories, types } from "../../assets/data";
 import {useSelector} from "react-redux";
@@ -8,8 +8,15 @@ const CreateListing = () => {
   const [step, setStep] = useState(1);
   const [error, setError] = useState(""); 
 const [success, setSuccess] = useState(""); 
+const user = useSelector((state) => state.user.user); 
 const creatorId = useSelector((state) => state.user?.user?._id);
 const navigate = useNavigate();
+
+useEffect(() => {
+  if (!user) {
+    navigate("/signin");
+  }
+}, [user, navigate]); 
 
   const [formData, setFormData] = useState({
     creator: creatorId || "", 
