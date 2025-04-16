@@ -3,7 +3,7 @@
 **Homescape** is a full-stack real estate web application that enables users to explore, post, and manage property listings across various categories. Built using modern technologies, it features a React + Redux Toolkit frontend, CSS for design, and an Express.js + MongoDB backend. Property images are stored via Supabase Storage, while advanced features like location-based searching and AI-powered description generation(pending feature) make it stand out. Deployed seamlessly with Vercel, the project is scalable and production-ready.
 
 # Live Preview
-<a href="https://homescape-real-estate.netlify.app/">Link to Project</a>
+<a href="https://homescape-real-estate.netlify.app/">HomeScape🏠</a>
 
 ---
 
