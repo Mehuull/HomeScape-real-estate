@@ -89,8 +89,9 @@ const handleSubmit = async (e) => {
       setError("All fields are required! Please fill in all details.");
       return;
     }
-    if (formData.description.length > 12 ){
-      setError("Please describe property into Atleast 1 or 2 line.. ")
+    if (formData.description.length < 12) {
+      setError("Please describe the property in at least 1 or 2 lines.");
+      return;
     }
 
   try {
