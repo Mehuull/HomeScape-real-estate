@@ -42,16 +42,15 @@
   .about-content p {
     font-size: 1.2rem;
     line-height: 1.5;
-    color: #666666; /* Subtle text */
+    color: #666666; 
   }
   
-  /* Image Styles */
   .about-container1 img, .about-container2 img, .about-container3 img {
     flex: 1;
     max-width: 440px;
     border-radius: 10px;
     object-fit: contain;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
   }
   
   
