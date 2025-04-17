@@ -8,6 +8,12 @@ import Property  from "../models/Listing.js";
 import dotenv from "dotenv";
 import https from "https";
 
+
+import { GoogleGenerativeAI } from "@google/generative-ai";
+
+const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
+const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+
 const agent = new https.Agent({ rejectUnauthorized: true });
 const router = express.Router();
 dotenv.config();
@@ -230,6 +236,64 @@ router.delete('/:id/delete', async (req, res) => {
 });
 
 
+router.post("/generate-description", async (req, res) => {
+  try {
+    const {
+      creator,
+      category,
+      type,
+      streetAddress,
+      aptSuite,
+      city,
+      country,
+      propertyname,
+      listingtype,
+      status,
+      area,
+      price,
+      propertyage,
+      furnishing,
+      facing,
+      parking,
+      waterAvailability,
+      electricityAvailability,
+      description,
+    } = req.body;
+
+    const addressParts = [streetAddress, aptSuite, city, country].filter(Boolean);
+    const address = addressParts.join(", ");
+
+    let prompt = `Generate 2 informative paragraphs describing a real estate property using the following details:\n`;
+
+    if (propertyname) prompt += `Property Name: ${propertyname}\n`;
+    if (address) prompt += `Address: ${address}\n`;
+    if (category) prompt += `Category: ${category}\n`;
+    if (type) prompt += `Type: ${type}\n`;
+    if (listingtype) prompt += `Listing Type: ${listingtype}\n`;
+    if (status) prompt += `Status: ${status}\n`;
+    if (area) prompt += `Area (in Sqft): ${area}\n`;
+    if (price) prompt += `Price: ${price}\n`;
+    if (propertyage) prompt += `Property Age: ${propertyage} years\n`;
+    if (furnishing) prompt += `Furnishing: ${furnishing}\n`;
+    if (facing) prompt += `Facing: ${facing}\n`;
+    if (parking) prompt += `Parking: ${parking}\n`;
+    if (waterAvailability) prompt += `Water Availability: ${waterAvailability}\n`;
+    if (electricityAvailability) prompt += `Electricity Availability: ${electricityAvailability}\n`;
+    if (description) prompt += `Additional Description: ${description}\n`;
+
+    prompt += `\nIgnore any undefined or missing values. Use the given information to generate realistic and engaging content.`;
+
+    const result = await model.generateContent(prompt);
+    const response = await result.response;
+    const generatedText = response.text();
+    console.log(generatedText);
+
+    res.status(200).json({ description: generatedText });
+  } catch (error) {
+    console.error("AI generation error:", error);
+    res.status(500).json({ error: "Failed to generate description" });
+  }
+});
 
 
 export default router;
