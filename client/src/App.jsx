@@ -12,6 +12,7 @@ import ListingDetails from "./components/ListingDetails/ListingDetails.jsx";
 import Profile from "./components/Profile/Profile.jsx";
 import MyListing from "./components/MyListing/mylisting.jsx";
 import Footer from "./components/footer/footer.jsx";
+import NotFound from "./components/NotFound/NotFound.jsx";
 
 function App() {
   return (
@@ -29,11 +30,10 @@ function App() {
             <Route path="/listing/:_id" element={<ListingDetails />} />
             <Route path="/:_id/profile" element={<Profile />} />
             <Route path="/:_id/mylisting" element={<MyListing />} />
-            
+            <Route path="*" element={<NotFound />} />
           </Routes>
           <Footer />
         </AuthContextProvider>
-       
       </BrowserRouter>
     </>
   );
