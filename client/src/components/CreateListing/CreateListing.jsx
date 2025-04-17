@@ -1,25 +1,29 @@
-import React, { useState ,useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import "./CreateListing.css";
 import { categories, types } from "../../assets/data";
-import {useSelector} from "react-redux";
+import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { FaWandMagicSparkles } from "react-icons/fa6";
+import Loader from "../../utils/Loader.jsx";
+
 
 const CreateListing = () => {
   const [step, setStep] = useState(1);
-  const [error, setError] = useState(""); 
-const [success, setSuccess] = useState(""); 
-const user = useSelector((state) => state.user.user); 
-const creatorId = useSelector((state) => state.user?.user?._id);
-const navigate = useNavigate();
+  const [error, setError] = useState("");
+  const [success, setSuccess] = useState("");
+  const creatorId = useSelector((state) => state.user?.user?._id);
+  const user = useSelector((state) => state.user.user);
+  const navigate = useNavigate();
 
-useEffect(() => {
-  if (!user) {
-    navigate("/signin");
-  }
-}, [user, navigate]); 
+
+  useEffect(() => {
+    if (!user) {
+      navigate("/signin");
+    }
+  }, [user, navigate]);
 
   const [formData, setFormData] = useState({
-    creator: creatorId || "", 
+    creator: creatorId || "",
     category: "",
     type: "",
     streetAddress: "",
@@ -37,29 +41,27 @@ useEffect(() => {
     parking: "",
     waterAvailability: "",
     electricityAvailability: "",
-    description:"",
-    images:[],
+    description: "",
+    images: [],
   });
   console.log(formData);
-
 
   const handleNext = () => setStep((prev) => prev + 1);
   const handlePrevious = () => setStep((prev) => prev - 1);
 
   const handleChange = (e) => {
     const { name, value, type, files } = e.target;
-  
+
     setFormData((prevData) => ({
       ...prevData,
       [name]: type === "file" ? Array.from(files) : value, // ✅ Handle both text and file inputs
     }));
   };
-  
 
-const handleSubmit = async (e) => {
-  e.preventDefault();
-  setError(""); 
-  setSuccess(""); 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setError("");
+    setSuccess("");
 
     // ✅ Required fields (except images)
     const requiredFields = [
@@ -81,10 +83,10 @@ const handleSubmit = async (e) => {
       "electricityAvailability",
       "description",
     ];
-  
+
     // ✅ Check if any required field is empty
     const emptyFields = requiredFields.filter((field) => !formData[field]);
-  
+
     if (emptyFields.length > 0) {
       setError("All fields are required! Please fill in all details.");
       return;
@@ -94,75 +96,132 @@ const handleSubmit = async (e) => {
       return;
     }
 
-  try {
-    const formDataToSend = new FormData();
+    try {
+      const formDataToSend = new FormData();
 
-    // ✅ Append all form fields (Avoid empty values)
-    Object.entries(formData).forEach(([key, value]) => {
-      if (key !== "images" && value) { // ✅ Only add non-empty fields
-        formDataToSend.append(key, value);
+      // ✅ Append all form fields (Avoid empty values)
+      Object.entries(formData).forEach(([key, value]) => {
+        if (key !== "images" && value) {
+          // ✅ Only add non-empty fields
+          formDataToSend.append(key, value);
+        }
+      });
+
+      // ✅ Append all selected images
+      if (formData.images.length > 0) {
+        formData.images.forEach((file) => {
+          formDataToSend.append("images", file);
+        });
       }
-    });
 
-    // ✅ Append all selected images
-    if (formData.images.length > 0) {
-      formData.images.forEach((file) => {
-        formDataToSend.append("images", file);
-      });
+      // ✅ Debug: Log FormData before sending
+      console.log("FormData before sending:");
+      for (let pair of formDataToSend.entries()) {
+        console.log(`${pair[0]}:`, pair[1]); // Should log File objects, not "fakepath"
+      }
+
+      // ✅ Send everything in one request
+      const response = await fetch(
+        "https://home-scape-real-estate.vercel.app/listing/createlisting",
+        {
+          method: "POST",
+          body: formDataToSend, // ✅ Send as FormData
+        }
+      );
+
+      const result = await response.json();
+      console.log(result);
+
+      if (response.ok) {
+        setSuccess("Property listed successfully!");
+        setFormData({
+          creator: creatorId,
+          category: "",
+          type: "",
+          streetAddress: "",
+          aptSuite: "",
+          city: "",
+          country: "",
+          propertyname: "",
+          listingtype: "",
+          status: "",
+          area: "",
+          price: "",
+          propertyage: "",
+          furnishing: "",
+          facing: "",
+          parking: "",
+          waterAvailability: "",
+          electricityAvailability: "",
+          description: "",
+          images: [],
+        });
+        navigate("/properties");
+      } else {
+        alert(result.message || "Something went wrong. Please try again.");
+      }
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      alert("Network error. Please check your connection and try again.");
     }
+  };
 
-     // ✅ Debug: Log FormData before sending
-     console.log("FormData before sending:");
-     for (let pair of formDataToSend.entries()) {
-       console.log(`${pair[0]}:`, pair[1]); // Should log File objects, not "fakepath"
-     }
+  const [loading, setLoading] = useState(false);
 
-    // ✅ Send everything in one request
-    const response = await fetch("https://home-scape-real-estate.vercel.app/listing/createlisting", {
-      method: "POST",
-      body: formDataToSend, // ✅ Send as FormData
-    });
-
-    const result = await response.json();
-    console.log(result);
-
-    if (response.ok) {
-      setSuccess("Property listed successfully!");
-      setFormData({
-        creator: creatorId,
-        category: "",
-        type: "",
-        streetAddress: "",
-        aptSuite: "",
-        city: "",
-        country: "",
-        propertyname: "",
-        listingtype: "",
-        status: "",
-        area: "",
-        price: "",
-        propertyage: "",
-        furnishing: "",
-        facing: "",
-        parking: "",
-        waterAvailability: "",
-        electricityAvailability: "",
-        description:"",
-        images: [],
-      });
-      navigate("/properties")
-    } else {
-      alert(result.message || "Something went wrong. Please try again.");
+  const handleGenerateDescription = async () => {
+    try {
+      setError("");
+      setSuccess("");
+      const requiredFields = [
+        "category",
+        "type",
+        "streetAddress",
+        "city",
+        "country",
+        "propertyname",
+        "listingtype",
+        "status",
+        "area",
+        "price",
+        "propertyage",
+        "furnishing",
+        "facing",
+        "parking",
+        "waterAvailability",
+        "electricityAvailability",
+      ];
+  
+      // ✅ Check if any required field is empty
+      const emptyFields = requiredFields.filter((field) => !formData[field]);
+  
+    if (emptyFields.length > 0) {
+      setError("Please fill all fields to generate description with AI");
+      return;
     }
-  } catch (error) {
-    console.error("Error submitting form:", error);
-    alert("Network error. Please check your connection and try again.");
-  }
-};
-
-
-
-
+      setLoading(true);
+      const response = await fetch("https://home-scape-real-estate.vercel.app/listing/generate-description", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData), // formData contains all the fields
+      });
+  
+      const data = await response.json();
+  
+      if (response.ok) {
+        setFormData({ ...formData, description: data.description });
+      } else {
+        alert(data.error || "Something went wrong!");
+      }
+    } catch (error) {
+      console.error("Frontend AI error:", error);
+      alert("Error generating description.");
+    } finally {
+      setLoading(false);
+    }
+  };
+  
 
   return (
     <section className="add-property">
@@ -456,48 +515,65 @@ const handleSubmit = async (e) => {
           </div>
         )}
 
-
         {/* Step 3: Other Info */}
-  {step === 3 && (
-  <div className="step">
-    <h3>Other Information</h3>
-    { <div className="details-box">
-      <label>Description:</label>
-      <textarea
-        name="description"
-        value={formData.description}
-        onChange={handleChange}
-        rows="4"
-        cols="50"
-      ></textarea>
-    </div> }
+        {step === 3 && (
+          <div className="step">
+            <h3>Other Information</h3>
+            {
+              <div className="details-box">
+                
+                <label>Description:</label>
+                <button
+                  type="button"
+                  onClick={handleGenerateDescription}
+                  className="ai-button"
+                >
+                  Generate With AI <FaWandMagicSparkles />
+                </button>
+              {loading? (<Loader />) : (
+                 <textarea
+                 name="description"
+                 value={formData.description}
+                 onChange={handleChange}
+                 rows="6"
+                 cols="50"
+               ></textarea>
+              )}
+               
+              </div>
+            }
 
-    <div className="details-box">
-      <label>Upload Images:</label>
-      <input type="file" accept="image/*" name="images" onChange={handleChange} multiple />
-    </div>
+            <div className="details-box">
+              <label>Upload Images:</label>
+              <input
+                type="file"
+                accept="image/*"
+                name="images"
+                onChange={handleChange}
+                multiple
+              />
+            </div>
 
-      {/* Display Error Message */}
-    {error && <div className="error">{error}</div>}
-    
-    {/* Display Success Message */}
-    {success && <div className="success">{success}</div>}
+            {/* Display Error Message */}
+            {error && <div className="error">{error}</div>}
 
-    <div className="button-group">
-      <button
-        type="button"
-        className="prev-btn"
-        onClick={handlePrevious}
-      >
-        ← Previous
-      </button>
-      <button type="submit" className="submit-btn">
-        Submit Property
-      </button>
-    </div>
-  </div>
- )} 
+            {/* Display Success Message */}
+            {success && <div className="success">{success}</div>}
 
+            <div className="button-group">
+              <button
+                type="button"
+                className="prev-btn"
+                onClick={handlePrevious}
+              >
+                ← Previous
+              </button>
+              <button type="submit" className="submit-btn">
+                Submit Property
+              </button>
+            </div>
+          </div>
+        )}
       </form>
     </section>
   );
