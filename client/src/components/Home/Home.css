@@ -1,66 +1,3 @@
-/* .hero-section{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%; 
-    height: 100%; 
-    position: relative;
-    gap:1rem;
-    background-color: blue;
-}
-.hero-sub1{
-    background-color: antiquewhite;
-    width: 600px;
-    height: auto;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-.hero-sub2{
-    width: 600px;
-    height: auto;
-  background-color: aqua; 
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-.hero-sub1 img{
-    width: 100%;
-    height: 600px;
-    object-fit: contain;
-    border-bottom-right-radius: 50%;
-    border-bottom-left-radius: 50%;
-}
-.hero-sub2 img{
-    height: 700px;
-    width: 100%;
-    object-fit: contain;
-    border-top-right-radius: 50%;
-    border-top-left-radius: 50%;
-}
-.hero-sub1 .hero-content{
-    margin-bottom: 1rem;
-}
-@media screen and (max-width:768px){
-    .hero-sub1,.hero-sub2{
-        width: auto;
-        
-    }
-    .hero-section{
-        flex-direction: column;
-      gap:0;
-    }
-    .hero-sub1 img{
-     display: none;
-    }
-    .hero-sub2 img{
-        width: 600px;
-    }
-} */
- /* General Styles */
   .hero-section {
     display: flex;
     flex-wrap: wrap;
@@ -187,23 +124,6 @@
  }
   }
   
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- 
-
   .features-container {
     display: grid;
     grid-template-columns: repeat(3, 1fr); 

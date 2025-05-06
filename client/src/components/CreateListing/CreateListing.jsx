@@ -54,7 +54,7 @@ const CreateListing = () => {
 
     setFormData((prevData) => ({
       ...prevData,
-      [name]: type === "file" ? Array.from(files) : value, // ✅ Handle both text and file inputs
+      [name]: type === "file" ? Array.from(files) : value, // Handle both text and file inputs
     }));
   };
 
@@ -63,7 +63,7 @@ const CreateListing = () => {
     setError("");
     setSuccess("");
 
-    // ✅ Required fields (except images)
+    // Required fields (except images)
     const requiredFields = [
       "category",
       "type",
@@ -84,7 +84,7 @@ const CreateListing = () => {
       "description",
     ];
 
-    // ✅ Check if any required field is empty
+    // Check if any required field is empty
     const emptyFields = requiredFields.filter((field) => !formData[field]);
 
     if (emptyFields.length > 0) {
@@ -99,33 +99,33 @@ const CreateListing = () => {
     try {
       const formDataToSend = new FormData();
 
-      // ✅ Append all form fields (Avoid empty values)
+      // Append all form fields (Avoid empty values)
       Object.entries(formData).forEach(([key, value]) => {
         if (key !== "images" && value) {
-          // ✅ Only add non-empty fields
+          // Only add non-empty fields
           formDataToSend.append(key, value);
         }
       });
 
-      // ✅ Append all selected images
+      // Append all selected images
       if (formData.images.length > 0) {
         formData.images.forEach((file) => {
           formDataToSend.append("images", file);
         });
       }
 
-      // ✅ Debug: Log FormData before sending
-      console.log("FormData before sending:");
-      for (let pair of formDataToSend.entries()) {
-        console.log(`${pair[0]}:`, pair[1]); // Should log File objects, not "fakepath"
-      }
+      //  Log FormData before sending
+      // console.log("FormData before sending:");
+      // for (let pair of formDataToSend.entries()) {
+      //   console.log(`${pair[0]}:`, pair[1]); 
+      // }
 
-      // ✅ Send everything in one request
+      // Send everything in one request
       const response = await fetch(
         "https://home-scape-real-estate.vercel.app/listing/createlisting",
         {
           method: "POST",
-          body: formDataToSend, // ✅ Send as FormData
+          body: formDataToSend, 
         }
       );
 
@@ -191,7 +191,7 @@ const CreateListing = () => {
         "electricityAvailability",
       ];
   
-      // ✅ Check if any required field is empty
+      // Check if any required field is empty
       const emptyFields = requiredFields.filter((field) => !formData[field]);
   
     if (emptyFields.length > 0) {
@@ -204,7 +204,7 @@ const CreateListing = () => {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(formData), // formData contains all the fields
+        body: JSON.stringify(formData), 
       });
   
       const data = await response.json();
@@ -321,7 +321,7 @@ const CreateListing = () => {
               </div>
             </div>
 
-            {/* Property Details */}
+            {/* Property Details step:1*/}
             <div className="section">
               <h3>Provide some details of property</h3>
               <div className="primary-details">
@@ -404,7 +404,6 @@ const CreateListing = () => {
           </div>
         )}
 
-        {/* Step 2 and Step 3 remain unchanged but now properly handle `onChange` events */}
         {/* Step 2: Secondary Info */}
         {step === 2 && (
           <div className="secondary-details">

@@ -131,7 +131,7 @@ const ListingDetails = () => {
         </div>
         <hr />
 
-        {/* ✅ Corrected Owner Info Section with Link */}
+    
         <div className="owner-info">
   {!user ? (
     <div>

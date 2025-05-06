@@ -37,11 +37,11 @@ const Register = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    dispatch({ type: "REGISTER_START" }); // Correct usage of dispatch
+    dispatch({ type: "REGISTER_START" }); 
     setError(null);
     setIsEmailValid(true);
 
-    // Validate email format
+    
     if (!isEmailValid) {
       setError("Please enter a valid email.");
       return;
@@ -58,7 +58,7 @@ const Register = () => {
         body: registerForm,
       });
 
-      const result = await response.json(); // Parsing the response
+      const result = await response.json(); 
 
       if (!response.ok) {
         setError(result.message);
@@ -69,7 +69,7 @@ const Register = () => {
         setTimeout(() => {
           navigate("/Signin");
         }, 1000);
-        setFormData({ firstName: "", lastName: "", email: "", password: "", mobile: "", profileImage: null }); // Reset the form after success
+        setFormData({ firstName: "", lastName: "", email: "", password: "", mobile: "", profileImage: null }); 
       }
     } catch (error) {
       setError("An error occurred while registering. Please try again later.");
@@ -107,11 +107,11 @@ const Register = () => {
           value={formData.email}
           onChange={(e) => {
             handleChange(e);
-            handleEmailValidation(e.target.value); // Validate email on change
+            handleEmailValidation(e.target.value); 
           }}
           required
         />
-        {!isEmailValid && <p className="error-message">Please enter a valid email.</p>} {/* Show invalid email message */}
+        {!isEmailValid && <p className="error-message">Please enter a valid email.</p>}
 
         <input
           type="password"

@@ -50,8 +50,8 @@
 }
 
 .property-card {
-  display: flex; /* Flexbox layout */
-  flex-direction: row; /* Set row layout */
+  display: flex; 
+  flex-direction: row;
   border: 1px solid #ddd;
   border-radius: 10px;
   overflow: hidden;
@@ -261,7 +261,7 @@
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(0, 158, 253, 0.4);
 }
-/* Tablet and smaller */
+
 @media (max-width: 768px) {
   .search-bar {
     gap: 10px;
@@ -280,7 +280,7 @@
   }
 }
 
-/* Mobile */
+
 @media (max-width: 468px) {
   .search-bar {
     flex-direction: column;

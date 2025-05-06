@@ -19,7 +19,7 @@ const Properties = () => {
 
   const listings = useSelector((state) => state.user.listings || []);
 
-  // ✅ Update search input fields
+  // Update search input fields
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setSearchInputs((prev) => ({
@@ -28,7 +28,7 @@ const Properties = () => {
     }));
   };
 
-  // ✅ Fetch listings from backend
+  // Fetch listings from backend
   const getQueryListings = async () => {
     try {
       setLoading(true);
@@ -52,17 +52,17 @@ const Properties = () => {
     }
   };
 
-  // ✅ Auto fetch on category change
+  // Auto fetch on category change
   useEffect(() => {
     getQueryListings();
   }, [selectedCategory]);
 
-  // ✅ Manual fetch on search button click
+  
   const handleSearch = () => {
     getQueryListings();
   };
  
-    // ✅ Clear all filter fields
+    
     const clearFields = () => {
       setSearchInputs({
         location: "",
@@ -79,7 +79,7 @@ const Properties = () => {
         <h2>Discover Our Newest Listings</h2>
       </div>
 
-      {/* 🔍 Search Bar */}
+      {/* Search Bar */}
       <div className="search-bar">
         <div className="input-group">
           <i className="fas fa-city"></i>
@@ -191,7 +191,7 @@ const Properties = () => {
         </button>
       </div>
 
-      {/* 🏠 Category Filter */}
+      {/* Category Filter */}
       <div className="property-filters">
         {categories.map((item, index) => (
           <div
@@ -207,7 +207,7 @@ const Properties = () => {
         ))}
       </div>
 
-      {/* 🏘️ Listings */}
+      {/* Listings */}
       {loading ? (
         <Loader />
       ) : listings.length > 0 ? (

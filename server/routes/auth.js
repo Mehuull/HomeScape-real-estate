@@ -11,9 +11,8 @@ dotenv.config();
 const router = express.Router();
 const agent = new https.Agent({ rejectUnauthorized: true });
 
-// User registration endpoint
 
-//  Initialize Supabase
+//Initialize Supabase
 const supabase = createClient(
   process.env.SUPABASE_URL,
   process.env.SUPABASE_KEY,
@@ -22,7 +21,7 @@ const supabase = createClient(
   }
 );
 
-//  Multer Storage (Memory)
+// Multer Storage (Memory)
 const storage = multer.memoryStorage();
 const upload = multer({ storage });
 
@@ -74,7 +73,6 @@ router.post("/register", upload.single("profileImage"), async (req, res) => {
       profileImageUrl = publicUrlData.publicUrl;
     }
 
-    //  Save New User to MongoDB
     const newUser = new User({
       firstName,
       lastName,
@@ -136,7 +134,7 @@ router.put("/:_id/profile", async (req, res) => {
     const updateData = req.body; 
     console.log(updateData)
 
-    // Optionally, you can restrict what fields are allowed to be updated for security
+    //  restrict what fields are allowed to be updated 
     const allowedUpdates = ["firstName", "lastName", "email", "mobile"];
     const updates = Object.keys(updateData);
     const isValidOperation = updates.every((field) => allowedUpdates.includes(field));

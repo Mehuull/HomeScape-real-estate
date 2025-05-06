@@ -6,7 +6,7 @@ const MyListings = () => {
   const user = useSelector((state) => state.user.user); // Get current user
   const listings = useSelector((state) => state.user.listings) || []; // Safe fallback
 
-  // ✅ Correctly filter user-specific listings
+  // Correctly filter user-specific listings
   const myListings = React.useMemo(() => {
     if (!user || !Array.isArray(listings)) return [];
     
@@ -16,7 +16,7 @@ const MyListings = () => {
     });
   }, [user, listings]);
 
-  // ✅ User not logged in
+  // User not logged in
   if (!user) {
     return <p>Please log in to view your uploaded properties.</p>;
   }

@@ -135,7 +135,7 @@
    font-size: 1.2rem;
    font-family: var(--font-family-4);
   }
-  /* Responsive Design */
+
   @media (max-width: 768px) {
     .listing-details-wrapper {
       flex-direction: column;

@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 import { FaLocationDot } from "react-icons/fa6";
 import axios from "axios";
 import { useDispatch } from "react-redux";
-import { setListings } from "../../redux/state"; // Assuming you are using setListings to update state
+import { setListings } from "../../redux/state"; 
 import { useSelector } from "react-redux";
 
 const PropertyCard = ({
@@ -28,7 +28,7 @@ const PropertyCard = ({
   const navigate = useNavigate();
 
   const fallbackImage =
-    "https://fmqtuifqoyvytggxxfli.supabase.co/storage/v1/object/public/HomeScape/listings/houseplaceholder.jpg"; // ✅ Update this with your Supabase-hosted placeholder image.
+    "https://fmqtuifqoyvytggxxfli.supabase.co/storage/v1/object/public/HomeScape/listings/houseplaceholder.jpg";
   
      // Handle property deletion
   const handleDeleteProperty = () => {
@@ -60,10 +60,10 @@ const PropertyCard = ({
           {images.map((img, index) => (
             <SwiperSlide key={index}>
               <img
-                src={img} // ✅ Use direct image URL from Supabase
+                src={img} //Use direct image URL from Supabase
                 alt={`Property ${index}`}
                 className="property-image"
-                onError={(e) => (e.target.src = fallbackImage)} // ✅ Updated fallback image
+                onError={(e) => (e.target.src = fallbackImage)} 
               />
             </SwiperSlide>
           ))}

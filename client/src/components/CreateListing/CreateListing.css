@@ -184,7 +184,7 @@
   z-index: 1;
 }
 
-/* Blurred glow background */
+
 .ai-button::before {
   content: '';
   position: absolute;
@@ -222,7 +222,7 @@
   z-index: -1;
 }
 
-/* Hover glow */
+
 .ai-button:hover::before {
   opacity: 1;
   filter: blur(25px);
@@ -262,7 +262,6 @@
   }
 }
 
-/* Responsive adjustments */
 @media (max-width: 480px) {
   .ai-button {
     height: 45px;
@@ -271,8 +270,6 @@
   }
 }
 
-
-/* Submit Button */
 .submit-btn {
   background-color: #007bff;
   color: white;
@@ -289,7 +286,6 @@
   background-color: #0056b3;
 }
 
-/* Responsive Design */
 @media (max-width: 768px) {
   .categories-container {
     flex-wrap: wrap;

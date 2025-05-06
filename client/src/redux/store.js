@@ -10,7 +10,7 @@ import {
   REGISTER,
 } from "redux-persist";
 import storage from "redux-persist/lib/storage";
-import userReducer from "./state"; // ✅ Correct import
+import userReducer from "./state"; 
 
 const persistConfig = {
   key: "root",
@@ -18,11 +18,11 @@ const persistConfig = {
   storage,
 };
 
-const persistedReducer = persistReducer(persistConfig, userReducer); // ✅ Use the correct reducer
+const persistedReducer = persistReducer(persistConfig, userReducer); 
 
 export const store = configureStore({
   reducer: {
-    user: persistedReducer, // ✅ Wrap it in an object
+    user: persistedReducer, 
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({

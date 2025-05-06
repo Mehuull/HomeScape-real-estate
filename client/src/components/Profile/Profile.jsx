@@ -3,14 +3,14 @@ import { Link, useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import axios from 'axios';
 import './Profile.css';
-import { updateUser ,setLogout} from '../../redux/state.js'; // Action to update user in Redux
+import { updateUser ,setLogout} from '../../redux/state.js'; 
 
 const Profile = () => {
   const { _id } = useParams();
   const user = useSelector((state) => state.user.user);
   const dispatch = useDispatch();
 
-  const [isEditing, setIsEditing] = useState(false); // Manage Edit Mode
+  const [isEditing, setIsEditing] = useState(false);
   const [formData, setFormData] = useState({
     firstName: user.firstName || '',
     lastName: user.lastName || '',
@@ -23,22 +23,22 @@ const Profile = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  // ✅ Handle form submit (fix applied here)
+
   const handleSubmit = (e) => {
-    e.preventDefault(); // Prevent page refresh
+    e.preventDefault(); 
     axios
       .put(`https://home-scape-real-estate.vercel.app/auth/${_id}/profile`, formData)
       .then((res) => {
         alert('Profile Updated Successfully!');
         console.log(res.data);
-        dispatch(updateUser(res.data)); // Optional: update Redux user data
-        setIsEditing(false); // Exit edit mode
+        dispatch(updateUser(res.data));
+        setIsEditing(false); 
       })
       .catch((err) => console.error('Update failed:', err));
   };
 
 
-   // ✅ Handle delete user (DELETE request)
+   // Handle delete user (DELETE request)
    const handleDelete = () => {
     if (window.confirm('Are you sure you want to delete this account? This action is irreversible.')) {
       axios
@@ -47,7 +47,7 @@ const Profile = () => {
           alert('Account Deleted Successfully!');
           dispatch(setLogout());
           console.log(res.data);
-          navigate('/login'); // Redirect to home or login page after deletion
+          navigate('/login');
         })
         .catch((err) => console.error('Delete failed:', err));
     }

@@ -26,7 +26,7 @@ const supabase = createClient(
   }
 );
 
-//  Multer Storage (Memory to Handle Buffers)
+//  Multer Storage 
 const storage = multer.memoryStorage();
 const upload = multer({ storage });
 
@@ -35,7 +35,7 @@ router.post("/createlisting", upload.array("images", 5), async (req, res) => {
   try {
     console.log("Received Files:", req.files); // Debugging
 
-    // ✅ Extract Listing Data from Request Body
+    // Extract Listing Data from Request Body
     const {
       creator,
       category,
@@ -66,7 +66,7 @@ router.post("/createlisting", upload.array("images", 5), async (req, res) => {
 
       //  Upload to Supabase
       const { data, error } = await supabase.storage
-        .from("HomeScape") // Your Supabase Storage Bucket
+        .from("HomeScape") //Supabase Storage Bucket
         .upload(filePath, buffer, { contentType: mimetype });
 
       if (error) {
@@ -76,7 +76,7 @@ router.post("/createlisting", upload.array("images", 5), async (req, res) => {
           .json({ message: "Upload failed", error: error.message });
       }
 
-      //  Generate Public URL
+      // Generate Public URL
       const { data: publicUrlData } = supabase.storage
         .from("HomeScape")
         .getPublicUrl(filePath);
@@ -84,7 +84,7 @@ router.post("/createlisting", upload.array("images", 5), async (req, res) => {
       imageUrls.push(publicURL);
     }
 
-    // ✅ Save Listing to MongoDB
+    // Save Listing to MongoDB
     const newListing = new Listing({
       creator,
       category,
@@ -121,8 +121,8 @@ router.post("/createlisting", upload.array("images", 5), async (req, res) => {
 
 
 
-// ✅ Fetch Listings (With Optional Filtering)
-// ✅ Route to Fetch Listings Based on Category and/or City
+// Fetch Listings (With Optional Filtering)
+// Route to Fetch Listings Based on Category and/or City
 router.get("/", async (req, res) => {
   const qCategory = req.query.category;
   const { city, listingType, priceRange } = req.query;
@@ -297,29 +297,3 @@ router.post("/generate-description", async (req, res) => {
 
 
 export default router;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

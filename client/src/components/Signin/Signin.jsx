@@ -1,12 +1,12 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux"; // Use Redux for authentication
+import { useDispatch } from "react-redux"; 
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
-import { setLogin } from "../../redux/state.js"; // Import Redux action
+import { setLogin } from "../../redux/state.js"; 
 import "./Signin.css";
 
 const Login = () => {
-  const dispatch = useDispatch(); // Redux dispatch function
+  const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const [loginData, setLoginData] = useState({
@@ -16,7 +16,7 @@ const Login = () => {
 
   const [error, setError] = useState(null);
   const [success, setSuccess] = useState(null);
-  const [showPassword, setShowPassword] = useState(false); // Toggle password visibility
+  const [showPassword, setShowPassword] = useState(false); 
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -25,8 +25,8 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setError(null); // Reset error before new request
-    setSuccess(null); // Reset success message
+    setError(null); 
+    setSuccess(null);
 
     try {
       const response = await fetch("https://home-scape-real-estate.vercel.app/auth/login", {
@@ -46,13 +46,12 @@ const Login = () => {
       const result = await response.json();
       setSuccess("Login successful!");
 
-      // Dispatch login action to Redux store
       dispatch(setLogin({ user: result.user, token: result.token }));
 
-      // Save token to localStorage (optional)
+     
       localStorage.setItem("token", result.token);
 
-      // Redirect to home/dashboard
+     
       setTimeout(() => {
         navigate("/");
       }, 1000);
